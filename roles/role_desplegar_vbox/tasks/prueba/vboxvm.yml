@@ -83,7 +83,7 @@
       echo "Tarjetas_aislada_aislada"
       {% endif %}
 
-- name: Prueba 6 de ejecucio shell con recursos 
+- name: Prueba 6 de ejecucio shell con recursos
   shell: |
       {% if 'Tarjeta' == vmnet %}
       echo "Tarjeta_numero_0"
@@ -92,7 +92,7 @@
       echo "Tarjeta_numero_1"
       {% endif %}
 
-- name: Prueba 6 de mensaje con condicion
+- name: Prueba 1 de mensaje con condicion
   debug:
     msg: |
       {% if 'Tarjeta' == vmnet %}

@@ -6,9 +6,10 @@ vmvpython: "{{ '/usr/bin/python3.9' if 'RedHat9' in vmostype else '/usr/bin/pyth
 
 #tower_base_url: "http://172.18.0.4:8052"
 tower_base_url: "http://172.18.0.5:8052"
+tower_job_id: "97"
+tower_token: "T3qIBMvwZMS9321AL39Dlm66HeB3iX"
 tower_organization: "bvmorg"
 tower_inventory: "bvm_inventory"
-tower_token: "T3qIBMvwZMS9321AL39Dlm66HeB3iX"
 
 tower_user: "{{ lookup('env','TOWER_USERNAME') }}"
 tower_password: "{{ lookup('env','TOWER_PASSWORD') }}"
