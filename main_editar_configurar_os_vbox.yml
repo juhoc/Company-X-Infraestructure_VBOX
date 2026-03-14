@@ -5,4 +5,4 @@
 
   tasks:
     - include_role:
-        name: role_editar_configuracion_os_vbox
+        name: role_editar_configurar_os_vbox
