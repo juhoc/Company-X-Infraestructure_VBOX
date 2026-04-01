@@ -52,7 +52,7 @@
           Authorization: "Bearer {{ tower_token }}"
         body_format: json
         body:
-          name: "{{ vbvmgst_name }}.bvm.bluecare.kyndryl.net"
+          name: "{{ vmname }}.bvm.bluecare.kyndryl.net"
           enabled: true
           variables: '{ "ipaddress": {{ vmnipnet.stdout_lines[0] }},
             "ansible_host": {{ vmnipnet.stdout_lines[0] }},
