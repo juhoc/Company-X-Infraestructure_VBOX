@@ -6,3 +6,47 @@
         sleep 30
         VBoxManage unregistervm {{ vmname }} --delete
       register: vmoutputrmvm
+
+- block:
+    - name: Obtener inventario
+      uri:
+        url: "{{ tower_base_url }}/api/v2/organizations/{{ tower_organization }}/inventories/"
+        validate_certs: false
+        force_basic_auth: yes
+        method: GET
+        headers:
+          Authorization: "Bearer {{ tower_token }}"
+        status_code: 200
+      register: inventory_response
+    
+    - set_fact:
+          inventory_id: "{{ (inventory_response.json.results | selectattr('name', 'equalto', tower_inventory) | first).id }}"
+
+    - name: Buscar el nodo {{ vmostype }} en Ansinle
+          uri:
+            url: "{{ tower_base_url }}/api/v2/hosts/?name={{ vmostype }}&inventory={{ inventory_id }}"
+            method: GET
+            headers:
+              Authorization: "Bearer {{ tower_token }}"
+              Content-Type: "application/json"
+            status_code: 200
+            validate_certs: false
+          register: host_search
+
+    - name: 2. Validar si el host fue encontrado
+          set_fact:
+            host_id: "{{ host_search.json.results[0].id | default(none) }}"
+
+    - name: 3. Ejecutar el borrado si el ID existe
+          uri:
+            url: "{{ controller_url }}/api/v2/hosts/{{ host_id }}/"
+            method: DELETE
+            headers:
+              Authorization: "Bearer {{ tower_token }}"
+              Content-Type: "application/json"
+            status_code: [204]
+            validate_certs: false
+          when: host_id is not none
+          register: delete_result
+
+  delegate_to: localhost

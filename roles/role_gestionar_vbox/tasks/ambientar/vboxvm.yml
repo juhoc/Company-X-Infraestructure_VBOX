@@ -13,7 +13,7 @@
 
 - name: Ambiente VM {{ vmostype }} - {{ vmname }} en VirtuaBox
   set_fact:
-    vmenv: |
+    vmtier: |
       {% if 'vp' in vmname %}
       produccion
       {% elif 'vd' in vmname %}
@@ -21,7 +21,7 @@
       {% elif 'vlo' in vmname %}
       liga oculta
       {% endif %}
-    vmtier: |
+    vmenv: |
       {% if 'vp' in vmname %}
       pr
       {% elif 'vd' in vmname %}

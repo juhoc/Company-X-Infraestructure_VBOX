@@ -11,12 +11,10 @@
           Authorization: "Bearer {{ tower_token }}"
         status_code: 200
       register: inventory_response
+    
     - set_fact:
         inventory_id: "{{ (inventory_response.json.results | selectattr('name', 'equalto', tower_inventory) | first).id }}"
-  delegate_to: localhost
 
-- name: Tareas por bloques - Agregar Linux-Windows HostNode por REST API Ansible AWX
-  block:
     - name: Agregar nuevo equipo Linux al inventario
       uri:
         url: "{{ tower_base_url }}/api/v2/inventories/{{ inventory_id }}/hosts/"
