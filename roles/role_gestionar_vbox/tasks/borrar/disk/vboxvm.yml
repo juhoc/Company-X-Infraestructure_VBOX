@@ -3,3 +3,4 @@
     - name: Borrar VM {{ vmostype }} - {{ vmname }} en VirtuaBox.
       shell: VBoxManage unregistervm {{ vmname }} --delete
       register: vmoutputrmvm
+  become: true

@@ -5,5 +5,5 @@
         VBoxManage controlvm {{ vmname }} poweroff
         sleep 30
       register: vmoutputpwoff
-
+  become: true
 

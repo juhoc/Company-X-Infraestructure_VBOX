@@ -13,3 +13,4 @@
         VBoxManage storageattach {{ vmname }} --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium emptydrive
         VBoxManage storagectl {{ vmname }} --name SATA --add sata --controller IntelAHCI --portcount 10
       register: vmoutputcreate
+  become: true

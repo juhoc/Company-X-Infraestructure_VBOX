@@ -6,6 +6,7 @@
         sleep 30
         VBoxManage unregistervm {{ vmname }} --delete
       register: vmoutputrmvm
+  become: true
 
 - block:
     - name: Obtener inventario
@@ -48,5 +49,4 @@
             validate_certs: false
           when: host_id is not none
           register: delete_result
-
   delegate_to: localhost

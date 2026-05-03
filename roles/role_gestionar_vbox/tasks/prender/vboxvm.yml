@@ -5,3 +5,4 @@
         VBoxManage startvm {{ vmname }} --type headless
         sleep 30
       register: vbxvm_sttup
+  become: true

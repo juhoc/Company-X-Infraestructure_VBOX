@@ -3,3 +3,4 @@
     - name: Snapshot VM {{ vmname }} en VirtuaBox.
       shell: VBoxManage snapshot {{ vmname }} take {{ vmname }}_snapshot --uniquename Timestamp --description="{{ vmname }}_{{ idhelix }}"
       register: vmoutputsnap
+  become: true

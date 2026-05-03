@@ -1,6 +1,5 @@
 ---
-- name: Tareas por bloques - Crear de virtuales en MasterServer VirtualBox
-  block:
+- block:
     - name: Creando VirtuaBox Linux
       shell: |
         VBoxManage createvm --name {{ vmname }} --ostype {{ vmostype }} --register --basefolder {{ dirdisknvmg }}
@@ -61,9 +60,9 @@
       register: vbxvm_sttnet
       when: "vbvm_up == 'Si'"
   ignore_errors: true
+  become: true
 
-- name: Tareas por bloques - VirtualBox Guest pertenece al ambiente Produccion o Desarrollo
-  block:
+- block:
     - name: Verificar VirtuaBox Guest Linux es produccion o desarrollo
       shell: echo "{{ vmname }}" | grep -i vblp >/dev/null && echo produccion || echo desarrollo
       register: vbvmgt_envl
@@ -73,9 +72,9 @@
       shell: echo "{{ vmname }}" | grep -i vbwp >/dev/null && echo produccion || echo desarrollo
       register: vbvmgt_envw
       when: "'Windows' in vmostype"
+  become: true
 
-- name: Tareas por bloques - Imprimir Resultados VM Linux
-  block:
+- block:
     - name: Resultado de VirtualBox Guest
       debug:
         msg:
@@ -103,3 +102,4 @@
           - "IP Dinamica1: {{ vbxvm_sttnet.stdout_lines[0] }}"
           - "IP Dinamica2: {{ vbxvm_sttnet.stdout_lines[1] }}"
       when: "'Windows' in vmostype"
+  become: true

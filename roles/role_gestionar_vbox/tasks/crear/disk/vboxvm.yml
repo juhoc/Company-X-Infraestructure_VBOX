@@ -5,3 +5,4 @@
         VBoxManage createhd --filename {{ vmdstoredsk }}/{{ vmname }}/{{ 'sd_data00' if 'RedHat' in vmostype else 'hd_data00' }}.vdi --size {{ vmdsk }} --format VDI
         VBoxManage storageattach {{ vmname }} --storagectl SATA --port 1 --device 0 --type hdd --medium {{ vmdstoredsk }}/{{ vmname }}/{{ 'sd_data00' if 'RedHat' in vmostype else 'hd_data00' }}.vdi
       register: vmoutputstorageex
+  become: true

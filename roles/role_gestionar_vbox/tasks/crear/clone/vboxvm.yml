@@ -5,3 +5,4 @@
         VBoxManage clonemedium {{ vmdstoretpt }}/{{ vmostype }}.vdi {{ vmdstoresso }}/{{ vmname }}/{{ 'sd_system00' if 'RedHat' in vmostype else 'hd_system00' }}.vdi --format VDI
         VBoxManage storageattach {{ vmname }} --storagectl SATA --port 0 --device 0 --type hdd --medium {{ vmdstoresso }}/{{ vmname }}/{{ 'sd_system00' if 'RedHat' in vmostype else 'hd_system00' }}.vdi
       register: vmoutputclone
+  become: true

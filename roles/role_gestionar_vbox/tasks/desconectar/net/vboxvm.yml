@@ -3,6 +3,7 @@
     - name: Validar numero de Tarjetas de Red en la VM {{ vmostype }} - {{ vmname }} en VirtuaBox.
       shell: VBoxManage showvminfo {{ vmname }} | grep NIC | grep -v disabled | wc -l
       register: vmoutputnicn
+  become: true
 
 - block:
     - set_fact:
@@ -16,3 +17,4 @@
           {% else %}
             VBoxManage modifyvm {{ vmname }} --nic1 none --nic2 none
           {% endif %}
+  become: true

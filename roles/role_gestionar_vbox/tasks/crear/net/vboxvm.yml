@@ -30,3 +30,4 @@
             VBoxManage modifyvm {{ vmname }} --nic2 hostonly --hostonlyadapter2 vboxnet1
           {% endif %}
       register: vmoutputnetadd
+  become: true
