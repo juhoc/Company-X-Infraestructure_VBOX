@@ -7,7 +7,7 @@
       1,2,55
       {% elif 'large' in vmsources %}
       2,2,55
-      {% elif 'xlarge' in vmsources %}
+      {% elif 'extra' in vmsources %}
       2,3,55
       {% endif %}
 
