@@ -1,7 +1,7 @@
 ---
-vmdstoresso: /vmbox/Virtuals
-vmdstoredsk: /vmboxs/Virtuals
-vmdstoretpt: /vmboxs/Templates
+vmdstoresso: /storevm/vmbox/Virtuals
+vmdstoredsk: /storevm/vmboxs/Virtuals
+vmdstoretpt: /storevm/vmboxs/Templates
 vmvpython: "{{ '/usr/bin/python3.9' if 'RedHat9' in vmostype else '/usr/bin/python3.6' }}"
 
 #tower_base_url: "http://172.18.0.3:8052"
