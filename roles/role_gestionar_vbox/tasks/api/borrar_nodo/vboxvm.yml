@@ -24,11 +24,11 @@
         validate_certs: false
       register: host_search
 
-    - name: 2. Validar si el host fue encontrado
+    - name: Validar si el host fue encontrado
       set_fact:
         host_id: "{{ host_search.json.results[0].id | default(none) }}"
 
-    - name: 3. Ejecutar el borrado si el ID existe
+    - name: Ejecutar el borrado si el ID existe
       uri:
         url: "{{ tower_base_url }}/api/v2/hosts/{{ host_id }}/"
         method: DELETE
