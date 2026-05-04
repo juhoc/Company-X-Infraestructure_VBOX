@@ -40,7 +40,7 @@
 
     - name: 3. Ejecutar el borrado si el ID existe
       uri:
-        url: "{{ controller_url }}/api/v2/hosts/{{ host_id }}/"
+        url: "{{ tower_base_url }}/api/v2/hosts/{{ host_id }}/"
         method: DELETE
         headers:
           Authorization: "Bearer {{ tower_token }}"
