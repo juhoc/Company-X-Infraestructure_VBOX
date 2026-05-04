@@ -25,7 +25,7 @@
 
     - name: Buscar el nodo {{ vmostype }} en Ansinle
       uri:
-        url: "{{ tower_base_url }}/api/v2/hosts/?name={{ vmname }}&inventory={{ inventory_id }}"
+        url: "{{ tower_base_url }}/api/v2/hosts/?name__icontains={{ vmname }}&inventory={{ inventory_id }}"
         method: GET
         headers:
           Authorization: "Bearer {{ tower_token }}"
