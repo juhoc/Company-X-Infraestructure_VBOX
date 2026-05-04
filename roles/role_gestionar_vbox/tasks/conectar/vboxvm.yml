@@ -9,7 +9,7 @@
         VBoxManage modifyvm {{ vmname }} --memory {{ vmmem }}
         VBoxManage modifyvm {{ vmname }} --graphicscontroller vmsvga
         VBoxManage modifyvm {{ vmname }} --vram 16
-        VBoxManage modifyvm {{ vmname }} --nic1 bridged --nictype1 82545EM --bridgeadapter1 enp0s31f6
+        VBoxManage modifyvm {{ vmname }} --nic1 bridged --nictype1 82545EM --bridgeadapter1 enp9s0
         VBoxManage modifyvm {{ vmname }} --nic2 hostonly --nictype2 82545EM --hostonlyadapter2 vboxnet0
         VBoxManage storagectl {{ vmname }} --name SATA --add sata --controller IntelAHCI --portcount 1
         VBoxManage clonemedium {{ dirdisknvmg }}/{{ vmostype }}/vbal{{ vbvmcl_oslver }}clone.vdi {{ dirdisknvmg }}/{{ vmname }}/vbal{{ vbvmcl_oslver }}_sda.vdi --format VDI
