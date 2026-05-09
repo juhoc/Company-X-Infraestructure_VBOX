@@ -2,6 +2,6 @@
 - block:
     - name: Crear dico extra para la VM {{ vmostype }} - {{ vmname }} en VirtuaBox.
       shell: |
-        VBoxManage createhd --filename {{ vmdstoredsk }}/{{ vmname }}/{{ 'sd_data00' if 'RedHat' in vmostype else 'hd_data00' }}.vdi --size {{ vmdsk }} --format VDI
+        VBoxManage createhd --filename {{ vmdstoredsk }}/{{ vmname }}/{{ 'sd_data00' if 'RedHat' in vmostype else 'hd_data00' }}.vdi --size {{ vmdske | int * 1025 }} --format VDI
         VBoxManage storageattach {{ vmname }} --storagectl SATA --port 1 --device 0 --type hdd --medium {{ vmdstoredsk }}/{{ vmname }}/{{ 'sd_data00' if 'RedHat' in vmostype else 'hd_data00' }}.vdi
       register: vmoutputstorageex
