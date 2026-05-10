@@ -24,19 +24,19 @@
   set_fact:
     vmenv: |
       {% if 'vp' in vmname %}
-      produccion
+      Produccion
       {% elif 'vd' in vmname %}
-      desarrollo
+      Desarrollo
       {% elif 'vlo' in vmname %}
-      liga oculta
+      Liga_oculta
       {% endif %}
     vmtier: |
       {% if 'vp' in vmname %}
-      pr
+      PR
       {% elif 'vd' in vmname %}
-      ep
+      EP
       {% elif 'vlo' in vmname %}
-      lo
+      LO
       {% endif %}    
 
 - name: Prueba 3 agrupando eco de recursos
